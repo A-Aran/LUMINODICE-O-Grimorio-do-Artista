@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=3" />
+    <link rel="icon" type="image/png" href="./favicon.png?v=3" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="Grimório do Artista - Workspace criativo visual para exploração de conhecimento, estudos e worldbuilding. AsranVerse." />
+    <meta name="theme-color" content="#0f0c0a" />
+    <link rel="manifest" href="./manifest.json?v=3" />
+    <title>Grimório do Artista | AsranVerse</title>
+    <script type="module" crossorigin src="./assets/index-Ba5KLLkh.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DMVonxOM.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js').catch(console.error);
+        });
+      }
+    </script>
+  </body>
+</html>

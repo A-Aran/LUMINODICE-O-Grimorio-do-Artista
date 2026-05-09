@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="100%" height="100%">
+  <!-- Book Cover Background -->
+  <rect x="8" y="4" width="32" height="40" rx="4" fill="#2d1d12" stroke="#ffb300" stroke-width="2" />
+  
+  <!-- Spine decoration on the left -->
+  <path d="M14 4v40" stroke="#ffb300" stroke-width="1.5" opacity="0.5" />
+  <rect x="8" y="4" width="6" height="40" rx="1" fill="#ffb300" opacity="0.15" />
+
+  <!-- Gold Ornate Corners -->
+  <path d="M8 12V4h8" stroke="#ffb300" stroke-width="2" fill="none" />
+  <path d="M40 12V4h-8" stroke="#ffb300" stroke-width="2" fill="none" />
+  <path d="M8 36v8h8" stroke="#ffb300" stroke-width="2" fill="none" />
+  <path d="M40 36v8h-8" stroke="#ffb300" stroke-width="2" fill="none" />
+
+  <!-- Center Ornate Star (✦) -->
+  <path d="M24 13 Q24 24 13 24 Q24 24 24 35 Q24 24 35 24 Q24 24 24 13" fill="#ffb300" />
+</svg>
