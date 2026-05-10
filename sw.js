@@ -1,4 +1,4 @@
-const CACHE_NAME = 'grimorio-v10';
+const CACHE_NAME = 'grimorio-v11';
 const ASSETS = [
   './',
   './index.html',
