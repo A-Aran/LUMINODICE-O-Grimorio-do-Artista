@@ -1,4 +1,4 @@
-const CACHE_NAME = 'grimorio-v17';
+const CACHE_NAME = 'grimorio-v19';
 const ASSETS = [
   './',
   './index.html',
@@ -37,16 +37,34 @@ self.addEventListener('activate', (e) => {
 });
 
 self.addEventListener('fetch', (e) => {
+  // Handle standard HTTP/S requests only (skip chrome-extension or other protocols)
+  if (!e.request.url.startsWith('http')) return;
+
   e.respondWith(
-    caches.match(e.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-      return fetch(e.request).catch(() => {
-        if (e.request.mode === 'navigate') {
-          return caches.match('/');
+    fetch(e.request)
+      .then((networkResponse) => {
+        // Clone the response to use it for cache
+        const clonedResponse = networkResponse.clone();
+        
+        // Dynamically cache successful GET responses (like new hashed JS/CSS assets)
+        if (e.request.method === 'GET' && networkResponse.status === 200) {
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(e.request, clonedResponse);
+          });
         }
-      });
-    })
+        return networkResponse;
+      })
+      .catch(() => {
+        // If the network request fails, attempt to load from cache
+        return caches.match(e.request).then((cachedResponse) => {
+          if (cachedResponse) {
+            return cachedResponse;
+          }
+          // If offline and it's a navigation request, fall back to root index.html relative to base
+          if (e.request.mode === 'navigate') {
+            return caches.match('./') || caches.match('./index.html');
+          }
+        });
+      })
   );
 });
