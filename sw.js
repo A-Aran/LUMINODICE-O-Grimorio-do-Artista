@@ -1,4 +1,4 @@
-const CACHE_NAME = 'grimorio-v19';
+const CACHE_NAME = 'grimorio-v86';
 const ASSETS = [
   './',
   './index.html',
@@ -45,7 +45,7 @@ self.addEventListener('fetch', (e) => {
       .then((networkResponse) => {
         // Clone the response to use it for cache
         const clonedResponse = networkResponse.clone();
-        
+
         // Dynamically cache successful GET responses (like new hashed JS/CSS assets)
         if (e.request.method === 'GET' && networkResponse.status === 200) {
           caches.open(CACHE_NAME).then((cache) => {
